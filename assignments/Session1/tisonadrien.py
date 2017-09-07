@@ -23,6 +23,7 @@ list_sum = tab+mybuggylist
 
 """
 
+##  First exercice
     
 #Declare a function with an input list return float
 def average_above_zero(table):
@@ -38,7 +39,7 @@ def average_above_zero(table):
         elif table[i]==0:
             print('Zéro !')
         else:
-            print('Négatif : '+str(table[i]))
+            #print('Négatif : '+str(table[i]))
             som = som + table[i]
             n = n+1
     moy = float(som)/float(n)
@@ -62,5 +63,34 @@ average = average_above_zero(tab)
 message = "Average of random : {result}".format(result = average)
 #print the message formated
 print(message)
+
+
+## Second exercice
+
+
+def max_value_of(table):
+    ##
+    #basic function able to return the max value of a list
+    #@param input list : a list to analyze
+    #@throws an exception (ValueError) on an empty list
+    #first check if provided list is not empty
+    if len(table) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
+     
+    #init max value
+    max_value = table[0]
+    nmax = len(table)
+    for i in xrange(nmax):
+        if table[i]>max_value:
+            max_value=table[i]
+    return max_value
+
+#test max value function
+max_val = max_value_of(tab)
+message = "Max value is {result}".format(result=max_val)
+print(message)
+
+
 
 
