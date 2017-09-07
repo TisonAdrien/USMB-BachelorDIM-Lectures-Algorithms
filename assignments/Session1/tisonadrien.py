@@ -27,6 +27,9 @@ list_sum = tab+mybuggylist
     
 #Declare a function with an input list return float
 def average_above_zero(table):
+    ##
+    #basic function able to return the average above zero of a list
+    #@param input list : a list to analyze
     som = 0
     n = 0
     #nmax is the lenght of my list
@@ -68,7 +71,7 @@ print(message)
 ## Second exercice
 
 
-def max_value_of(table):
+def max_value(table):
     ##
     #basic function able to return the max value of a list
     #@param input list : a list to analyze
@@ -87,9 +90,94 @@ def max_value_of(table):
     return max_value
 
 #test max value function
-max_val = max_value_of(tab)
+max_val = max_value(tab)
 message = "Max value is {result}".format(result=max_val)
 print(message)
+
+
+## Third exercice
+
+def reverse_table(table):
+    ##
+    #basic function able to return the reverse table
+    #@param input list : a list to reverse
+    #@throws an exception (ValueError) on an empty list
+    #first check if provided list is not empty
+    if len(table) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
+    
+    pos_last = len(table)
+    for i in xrange(len(table)/2):
+        #second position to exchange
+        pos_last-=1
+        #process the exchange : take the first val, replace the first then replace the last value
+        first = table[i]
+        table[i] = table[pos_last]
+        table[pos_last] = first
+    return table
+
+#Test reverse table function
+print(reverse_table([1,2,3,4,5,6]))
+print(reverse_table([1,2,3,4,5,6,7]))        
+
+
+##Fourth exercice
+#matrix processing lib
+import numpy
+#Create an empty matrix 10x10
+myMat = numpy.zeros([5,10])
+#set a value in a specific cell
+#myMat[1,1] = 1
+#set a value in a interval of the matrix
+myMat[2:4,5:9]=numpy.ones([2,4])
+      
+print(myMat)
+
+def roi_bbox(image):
+    ##
+    #function to bound an image with a binary code
+    #@param matrix
+    #output coordinates matrix
+    min_y = image.shape[0]
+    max_y = 0
+    min_x = image.shape[1]
+    max_x = 0
+    index_of_y = 0
+    for y in image:
+        index_of_x = 0
+        for x in y:
+            if x == 1:
+                if index_of_y < min_y:
+                    min_y = index_of_y
+                if index_of_y > max_y:
+                    max_y = index_of_y
+                if index_of_x < min_x:
+                    min_x = index_of_x
+                if index_of_x > max_x:
+                    max_x = index_of_x
+            index_of_x+=1
+        index_of_y+=1
+    
+    bbox_coords = numpy.zeros([4,2],int)
+    bbox_coords[0] = [min_y,min_x]
+    bbox_coords[1] = [min_y,max_x]
+    bbox_coords[2] = [max_y,min_x]
+    bbox_coords[3] = [max_y,max_x]
+    return bbox_coords
+    
+#test roi_bbox function
+print(roi_bbox(myMat))
+    
+
+##Fifth exercice
+
+
+
+
+
+
+
 
 
 
