@@ -168,14 +168,48 @@ def roi_bbox(image):
     
 #test roi_bbox function
 print(roi_bbox(myMat))
-    
 
 ##Fifth exercice
 
+def random_fill_sparse(table,vfill):
+    ##
+    #function to fill cells with value 'X'
+    #@param matrix, vfill
+    #output matrix
+    for i in range(vfill):
+        #take 2 randoms numbers
+        y = random.randint(0,table.shape[0]-1)
+        x = random.randint(0,table.shape[1]-1)
+        #Check if 'X' is already write here
+        while table[y,x] == 'X':
+            y = random.randint(0,table.shape[0]-1)
+            x = random.randint(0,table.shape[1]-1)
+        table[y,x] = 'X'
+    return table
+
+#test function random_fill_sprase
+myCharMat = numpy.zeros([5,5],dtype=str)
+print(random_fill_sparse(myCharMat,5))
 
 
 
+##Sixth exercice
+def remove_whitespace(string):
+    lenght = len(string)
+    i = 0
+    while i<lenght:
+        if string[i] == ' ':
+            string = string[0:i] + string[i+1:len(string)]
+            lenght-=1
+        i+=1
+    return string
 
+#test function remove whitspace
+string = "Hello World 1 2 3"
+print(string+' => '+remove_whitespace(string))
+
+
+##Seventh exercice
 
 
 
