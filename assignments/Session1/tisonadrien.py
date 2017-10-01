@@ -210,9 +210,138 @@ print(string+' => '+remove_whitespace(string))
 
 
 ##Seventh exercice
+def shuffle(list):
+    ##
+    # function to shuffle a list of values
+    # @param list : the list of values to shuffle
+    second_list = list[:]
+    new_list = []
+    length = len(second_list)
+    for x in range(length):
+        i = random.randint(0, len(second_list) - 1)
+        new_list.append(copy[i])
+        del second_list[i]
+
+    return new_list
+
+#test function shuffle
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(list)
+list = shuffle(list)
+print(list)
 
 
 
+##Eighth exercice
+"""
+Selective Sort
+a)
+[10, 15, 7, 1, 3, 3, 9]
+min = 1, switch 10 and 1, restart with i=1
+[1, 15, 7, 10, 3, 3, 9]
+min = 3, switch 15 and 3, restart with i=2
+[1, 3, 7, 10, 15, 3, 9]
+min = 3, switch 7 and 3, restart with i=3
+[1, 3, 3, 10, 15, 7, 9]
+min = 7, switch 10 and 7, restart with i=4
+[1, 3, 3, 7, 15, 10, 9]
+min = 9, switch 15 and 9, restart with i=5
+[1, 3, 3, 7, 9, 10, 15]
+
+b) No, it depend of the length
+c) length - 1, here : 6
+d) 5
+e) 7 * (7-1)/2 = 21
+f) O(n^2)
+g)  50 : 49 permutations, 1225 comparisons
+    100 : 99 permutations, 4950 comparisons
+    500 : 499 permutations, 124750 comparisons
+"""
+
+def sort_selective(list):
+    ##
+    # function to sort a list
+    # @param list to sort
+    for i in xrange(len(list) - 1):
+        min = i
+        for x in xrange(i, len(list)):
+            if list[x] < list[min]:
+                min = x
+
+        if min != i:
+            value = list[min]
+            list[min] = list[i]
+            list[i] = value
+
+    return list
+
+#test function sort_selective
+list = [10, 15, 7, 1, 3, 3, 9]
+print(list)
+list = sort_selective(list)
+print(list)
 
 
+"""
+Bubble Sort
+a) 
+[10, 15, 7, 1, 3, 3, 9]
+switch 15 and 7
+[10, 7, 15, 1, 3, 3, 9]
+switch 15 and 1
+[10, 7, 1, 15, 3, 3, 9]
+switch 15 and 3
+[10, 7, 1, 3, 15, 3, 9]
+switch 15 and 3
+[10, 7, 1, 3, 3, 15, 9]
+switch 15 and 9
+[10, 7, 1, 3, 3, 9, 15]
+Restart
+switch 10 and 7
+[7, 10, 1, 3, 3, 9, 15]
+switch 10 and 1
+[7, 1, 10, 3, 3, 9, 15]
+switch 10 and 3
+[7, 1, 3, 10, 3, 9, 15]
+switch 10 and 3
+[7, 1, 3, 3, 10, 9, 15]
+switch 10 and 9
+[7, 1, 3, 3, 9, 10, 15]
+Restart
+switch 7 and 1
+[1, 7, 3, 3, 9, 10, 15]
+switch 7 and 3
+[1, 3, 7, 3, 9, 10, 15]
+switch 7 and 3
+[1, 3, 3, 7, 9, 10, 15]
+Sorted
+b) Yes
+c) 3
+d) 13
+e) 21
+f) O(n^2)
+g)  50 : 1175 permutations, 1225 comparisons
+    100 : 4850 permutations, 4950 comparisons
+    500 : 124250 permutations, 124750 comparisons
+"""
 
+
+def sort_bubble(list):
+    ##
+    # function to sort a list
+    # @param list to sort
+    for i in xrange(0, len(list) - 1):
+        for x in xrange(0, len(list) - 1):
+            if list[x] > list[x + 1]:
+                value = list[x + 1]
+                list[x + 1] = list[x]
+                list[x] = value
+
+    return list
+
+
+#test function sort_bubble
+list = [10, 15, 7, 1, 3, 3, 9]
+print(list)
+list = sort_bubble(list)
+print(list)
