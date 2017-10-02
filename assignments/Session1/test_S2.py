@@ -27,7 +27,7 @@ def test_roi_bbox():
     mat = numpy.zeros([5,10])
     mat[2:4,5:9]=numpy.ones([2,4])
     res = tisonadrien.roi_bbox(mat)
-    assert res.all() == [[2,5],[2,8],[3,5],[3,8]]
+    assert res == numpy.array([[2,5],[2,8],[3,5],[3,8]])
     
 def test_remove_whitespace():
     chaine = "Hello world ! "
