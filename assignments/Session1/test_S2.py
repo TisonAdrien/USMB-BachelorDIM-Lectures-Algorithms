@@ -4,12 +4,9 @@ Created on Mon Oct 02 09:56:54 2017
 
 @author: tisonad
 """
-import pytest
+
 import tisonadrien
 import numpy
-
-def test_divided_by_zero():
-    while pytest.raises(ZeroDivisionError): 1 / 0
 
 def test_average_above_zero():
     tab = [1,1,1,0,1,0,1,1]
@@ -18,8 +15,7 @@ def test_average_above_zero():
     
 def test_max_value():
     tab = [1,50,23,56,9,0]
-    res = tisonadrien.max_val(tab)
-    assert res == 56
+    assert tisonadrien.max_val(tab) == 56
 
 def test_reverse_table():
     tab = [1,2,3,4,5,6,7,8,9]
