@@ -219,7 +219,7 @@ def shuffle(list):
     length = len(second_list)
     for x in range(length):
         i = random.randint(0, len(second_list) - 1)
-        new_list.append(copy[i])
+        new_list.append(second_list[i])
         del second_list[i]
 
     return new_list
