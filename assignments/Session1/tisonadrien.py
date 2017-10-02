@@ -42,10 +42,13 @@ def average_above_zero(table):
         elif table[i]==0:
             print('Zéro !')
         else:
-            #print('Négatif : '+str(table[i]))
-            som = som + table[i]
-            n = n+1
-    moy = float(som)/float(n)
+            print('Négatif : '+str(table[i]))
+            #som = som + table[i]
+            #n = n+1
+    if(n == 0):
+        moy = 0
+    else:
+        moy = float(som)/float(n)
     return moy
     
 #random
