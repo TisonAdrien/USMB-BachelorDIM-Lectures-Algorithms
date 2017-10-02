@@ -15,7 +15,8 @@ def test_average_above_zero():
     
 def test_max_value():
     tab = [1,50,23,56,9,0]
-    assert tisonadrien.max_val(tab) == 56
+    res = tisonadrien.max_value(tab)
+    assert res == 56
 
 def test_reverse_table():
     tab = [1,2,3,4,5,6,7,8,9]
@@ -26,7 +27,7 @@ def test_roi_bbox():
     mat = numpy.zeros([5,10])
     mat[2:4,5:9]=numpy.ones([2,4])
     res = tisonadrien.roi_bbox(mat)
-    assert res == [[2,5],[2,8],[3,5],[3,8]]
+    assert res.all() == [[2,5],[2,8],[3,5],[3,8]]
     
 def test_remove_whitespace():
     chaine = "Hello world ! "
