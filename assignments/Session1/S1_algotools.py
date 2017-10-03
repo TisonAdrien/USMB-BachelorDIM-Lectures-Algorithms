@@ -34,17 +34,16 @@ def average_above_zero(table):
     n = 0
     #nmax is the lenght of my list
     nmax = len(table)
-    
-    for i in xrange(nmax):
-        if table[i]>0:
-            som = som + table[i]
-            n = n+1
-        elif table[i]==0:
-            print('Zéro !')
-        else:
-            print('Négatif : '+str(table[i]))
-            #som = som + table[i]
-            #n = n+1
+    if(nmax > 0):
+        for i in xrange(nmax):
+            if(type(table[i]) is float or type(table[i]) is int):
+                if table[i]>0:
+                    som = som + table[i]
+                    n = n+1
+                elif table[i]==0:
+                    print('Zéro !')
+                else:
+                    print('Négatif : '+str(table[i]))
     if(n == 0):
         moy = 0
     else:

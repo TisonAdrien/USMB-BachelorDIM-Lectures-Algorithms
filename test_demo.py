@@ -7,7 +7,6 @@ def test_basicTrue():
     """ one of the simplest test that does nothing except saying it works..."""
     assert True
 
-
 #testing session 1 functions
 def load_S1_script():
     """
