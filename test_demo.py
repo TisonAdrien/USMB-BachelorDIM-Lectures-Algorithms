@@ -60,7 +60,7 @@ def test_S1_selective_average_with_string_values():
     # @test validates average_above_zero works fine with integer values <=0
     check_S1_selective_average(['ab','c'])
 
-def test_S1_selective_average_with_string_values():
+def test_S1_selective_average_with_empty_values():
     ##
     # @test validates average_above_zero works fine with an empty list
     try:

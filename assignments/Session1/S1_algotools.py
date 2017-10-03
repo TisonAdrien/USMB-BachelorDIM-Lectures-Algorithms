@@ -1,158 +1,350 @@
-##
-#
-# @author Alexandre Benoit, LISTIC Lab, IUT Annecy le vieux, FRANCE
-# @brief a set of generic functions for data management
-
+# -*- coding: utf-8 -*-
 """
-# a variable
-a=1 # default type : int
+Created on Thu Sep 07 09:47:29 2017
 
-# an empty list
-mylist = []
+@author: Adrien Tison, IUT Annecy : LPDIM
+@brief a set of generic functions for data management
 
+#a empty list
+tab = []
 #a filled list
-mylist2=[1,2,3]
-
+tab = [0,1,2,3,4,5,6,7,8,9]
 #append to a list
-mylist.append(10)
+tab.append(10)
+#a buggy list
+mybuggylist = [1,'a',"Hi"]
 
-# a buggy list
-mybuggylist=[1,'a', "Hi"]
+#a variable
+a = 0 # default type : int
 
 #operators
 b=a+2
-mylist_sum=mylist+mylist2
+list_sum = tab+mybuggylist
+
 """
 
-
-def average_above_zero(input_list):
+##  First exercice
+    
+#Declare a function with an input list return float
+def average_above_zero(table):
     ##
-    # compute the average of positive values
-    # @input_list : the list of values to process
-    # @return the average value of all the positive elements
-
-    #init critical variable
-    positive_values_sum=0
-    positive_values_count=0
-
-    first_item=input_list[0] #just a line to generate a code smell with an unused value
-
-    #compute the average of positive elements of a list
-    for item in input_list:
-        #select only positive items
-        if item>0:
-            positive_values_sum+=item
-            positive_values_count+=1
-        elif item==0:
-            print('This value is null:'+str(item))
+    #basic function able to return the average above zero of a list
+    #@param input list : a list to analyze
+    som = 0
+    n = 0
+    #nmax is the lenght of my list
+    nmax = len(table)
+    
+    for i in xrange(nmax):
+        if table[i]>0:
+            som = som + table[i]
+            n = n+1
+        elif table[i]==0:
+            print('Zéro !')
         else:
-            print('This value is negative:'+str(item))
-    #compute the final average
-    average=float(positive_values_sum)/float(positive_values_count)
-    print('Positive elements average is '+str(average))
-    return float(average)
+            print('Négatif : '+str(table[i]))
+            #som = som + table[i]
+            #n = n+1
+    if(n == 0):
+        moy = 0
+    else:
+        moy = float(som)/float(n)
+    return moy
+    
+#random
+import random
 
-"""#testing average_above_zero function:
-mylist=[1,2,3,4,-7]
-result=average_above_zero(mylist)
-message='The average of positive samples of {list_value} is {res}'.format(list_value=mylist,
-                                                                          res=result)
+tab = []
+
+#append 200 random numbers in the list
+for i in xrange(200):
+    #take a random integer between -100 and 100
+    rand = random.randint(-100,100)
+    #append the random integer into te list
+    tab.append(rand)
+
+#Call the function average_above_zero
+average = average_above_zero(tab)
+#format the message to print
+message = "Average of random : {result}".format(result = average)
+#print the message formated
 print(message)
-"""
 
-def max_value(input_list):
+
+## Second exercice
+
+
+def max_value(table):
     ##
-    # basic function able to return the max value of a list
-    # @param input_list : the input list to be scanned
-    # @throws an exception (ValueError) on an empty list
-
+    #basic function able to return the max value of a list
+    #@param input list : a list to analyze
+    #@throws an exception (ValueError) on an empty list
     #first check if provided list is not empty
-    if len(input_list)==0:
-        raise ValueError('provided list is empty')
-    #init max_value and its index
-    max_val=input_list[0]
-    max_idx=0
-    #compute the average of positive elements of a list
-    """for item in input_list:
-        #select only positive items
-        if max_val<item:
-            max_val=item
-    """
-    #generic style : iterate over the range of list indexes
-    for idx in range(len(input_list)):
-        #select only positive items
-        if max_val<input_list[idx]:
-            max_val=input_list[idx]
-            max_idx=idx
+    if len(table) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
+     
+    #init max value
+    max_value = table[0]
+    nmax = len(table)
+    for i in xrange(nmax):
+        if table[i]>max_value:
+            max_value=table[i]
+    return max_value
+
+#test max value function
+max_val = max_value(tab)
+message = "Max value is {result}".format(result=max_val)
+print(message)
 
 
-    #generic style : iterate over the range of list indexes
-    for idx, item in enumerate(input_list):
-        #select only positive items
-        if max_val<item:
-            max_val=item
-            max_idx=idx
+## Third exercice
 
-    return max_val, max_idx
-"""
-#test max_value function
-#1 basic test, expected answer=2
-mylist=[-1,2,-20]
-mymax, mymaxidx=max_value(mylist)
-mymax_tuple=max_value(mylist)
-mymax=mymax_tuple[0]
-print('Max value of {input_list} is {max_scan}'.format(input_list=mylist, max_scan=mymax))
-#==> message : "Max value of [-1, 2, -20] is (2, 1)"
+def reverse_table(table):
+    ##
+    #basic function able to return the reverse table
+    #@param input list : a list to reverse
+    #@throws an exception (ValueError) on an empty list
+    #first check if provided list is not empty
+    if len(table) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
+    
+    pos_last = len(table)
+    for i in xrange(len(table)/2):
+        #second position to exchange
+        pos_last-=1
+        #process the exchange : take the first val, replace the first then replace the last value
+        first = table[i]
+        table[i] = table[pos_last]
+        table[pos_last] = first
+    return table
 
-#2 error test : Exception expected
-max_value([])
-"""
+#Test reverse table function
+print(reverse_table([1,2,3,4,5,6]))
+print(reverse_table([1,2,3,4,5,6,7]))        
 
-"""
-# hints to solve the roi_bbox function exercise: numpy basics
 
+##Fourth exercice
 #matrix processing lib
 import numpy
-
-#create a numpy matrix with specific dimensions
-size_rows=10
-size_cols=10
-myMat=numpy.zeros([size_rows, size_cols], dtype=int)
+#Create an empty matrix 10x10
+myMat = numpy.zeros([5,10])
 #set a value in a specific cell
-myMat[1,3]=1
-
-#fil something in the matrix, the basic way (a very slow python way...)
-for row in range(5,8):
-    for col in range(7,9):
-        myMat[row,col]=1
-
-#get time to measure processing speed
-import time
-init_time=time.time()
-
-#filling something in the matrix, a nicer way
-myMat[2:4,5:9]=1 #assign a scalar to each cell of a subarray
-myMat[4:7,7:9]=numpy.ones([3,2]) #copy an array in a subarray
+#myMat[1,1] = 1
+#set a value in a interval of the matrix
+myMat[2:4,5:9]=numpy.ones([2,4])
+      
 print(myMat)
 
-#get ellapsed time
-filling_time=time.time() -init_time
-print('data prefecting time='+str(filling_time))
+def roi_bbox(image):
+    ##
+    #function to bound an image with a binary code
+    #@param matrix
+    #output coordinates matrix
+    min_y = image.shape[0]
+    max_y = 0
+    min_x = image.shape[1]
+    max_x = 0
+    index_of_y = 0
+    for y in image:
+        index_of_x = 0
+        for x in y:
+            if x == 1:
+                if index_of_y < min_y:
+                    min_y = index_of_y
+                if index_of_y > max_y:
+                    max_y = index_of_y
+                if index_of_x < min_x:
+                    min_x = index_of_x
+                if index_of_x > max_x:
+                    max_x = index_of_x
+            index_of_x+=1
+        index_of_y+=1
+    
+    bbox_coords = numpy.zeros([4,2],int)
+    bbox_coords[0] = [min_y,min_x]
+    bbox_coords[1] = [min_y,max_x]
+    bbox_coords[2] = [max_y,min_x]
+    bbox_coords[3] = [max_y,max_x]
+    return bbox_coords
+    
+#test roi_bbox function
+print(roi_bbox(myMat))
 
-#fake bounding box coordinates matrix
-xmin=0
-xmax=100
-ymin=0
-ymax=200
-#how to fill the 4x2 bbox coordinates matrix, method 1 using 1D numpy arrays (ugly?)
-bbox_coords=numpy.zeros([4, 2], dtype=int)
-bbox_coords[0,:]=numpy.array([ymin, xmin])
-bbox_coords[1,:]=numpy.array([ymin, xmax])
-bbox_coords[2,:]=numpy.array([ymax, xmin])
-bbox_coords[3,:]=numpy.array([ymax, xmax])
-#how to fill the 4x2 bbox coordinates matrix, method 2 using lists (shorter way)
-#->create a list of lists
-coordsList=[[ymin, xmin],[ymin, xmax],[ymax, xmin],[ymax, xmax]]
-#->convert to an array
-coords_array=numpy.array(coordsList)
+##Fifth exercice
+
+def random_fill_sparse(table,vfill):
+    ##
+    #function to fill cells with value 'X'
+    #@param matrix, vfill
+    #output matrix
+    for i in range(vfill):
+        #take 2 randoms numbers
+        y = random.randint(0,table.shape[0]-1)
+        x = random.randint(0,table.shape[1]-1)
+        #Check if 'X' is already write here
+        while table[y,x] == 'X':
+            y = random.randint(0,table.shape[0]-1)
+            x = random.randint(0,table.shape[1]-1)
+        table[y,x] = 'X'
+    return table
+
+#test function random_fill_sprase
+myCharMat = numpy.zeros([5,5],dtype=str)
+print(random_fill_sparse(myCharMat,5))
+
+
+
+##Sixth exercice
+def remove_whitespace(string):
+    lenght = len(string)
+    i = 0
+    while i<lenght:
+        if string[i] == ' ':
+            string = string[0:i] + string[i+1:len(string)]
+            lenght-=1
+        i+=1
+    return string
+
+#test function remove whitspace
+string = "Hello World 1 2 3"
+print(string+' => '+remove_whitespace(string))
+
+
+##Seventh exercice
+def shuffle(list):
+    ##
+    # function to shuffle a list of values
+    # @param list : the list of values to shuffle
+    second_list = list[:]
+    new_list = []
+    length = len(second_list)
+    for x in range(length):
+        i = random.randint(0, len(second_list) - 1)
+        new_list.append(second_list[i])
+        del second_list[i]
+
+    return new_list
+
+#test function shuffle
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(list)
+list = shuffle(list)
+print(list)
+
+
+
+##Eighth exercice
 """
+Selective Sort
+a)
+[10, 15, 7, 1, 3, 3, 9]
+min = 1, switch 10 and 1, restart with i=1
+[1, 15, 7, 10, 3, 3, 9]
+min = 3, switch 15 and 3, restart with i=2
+[1, 3, 7, 10, 15, 3, 9]
+min = 3, switch 7 and 3, restart with i=3
+[1, 3, 3, 10, 15, 7, 9]
+min = 7, switch 10 and 7, restart with i=4
+[1, 3, 3, 7, 15, 10, 9]
+min = 9, switch 15 and 9, restart with i=5
+[1, 3, 3, 7, 9, 10, 15]
+
+b) No, it depend of the length
+c) length - 1, here : 6
+d) 5
+e) 7 * (7-1)/2 = 21
+f) O(n^2)
+g)  50 : 49 permutations, 1225 comparisons
+    100 : 99 permutations, 4950 comparisons
+    500 : 499 permutations, 124750 comparisons
+"""
+
+def sort_selective(list):
+    ##
+    # function to sort a list
+    # @param list to sort
+    for i in xrange(len(list) - 1):
+        min = i
+        for x in xrange(i, len(list)):
+            if list[x] < list[min]:
+                min = x
+
+        if min != i:
+            value = list[min]
+            list[min] = list[i]
+            list[i] = value
+
+    return list
+
+#test function sort_selective
+list = [10, 15, 7, 1, 3, 3, 9]
+print(list)
+list = sort_selective(list)
+print(list)
+
+
+"""
+Bubble Sort
+a) 
+[10, 15, 7, 1, 3, 3, 9]
+switch 15 and 7
+[10, 7, 15, 1, 3, 3, 9]
+switch 15 and 1
+[10, 7, 1, 15, 3, 3, 9]
+switch 15 and 3
+[10, 7, 1, 3, 15, 3, 9]
+switch 15 and 3
+[10, 7, 1, 3, 3, 15, 9]
+switch 15 and 9
+[10, 7, 1, 3, 3, 9, 15]
+Restart
+switch 10 and 7
+[7, 10, 1, 3, 3, 9, 15]
+switch 10 and 1
+[7, 1, 10, 3, 3, 9, 15]
+switch 10 and 3
+[7, 1, 3, 10, 3, 9, 15]
+switch 10 and 3
+[7, 1, 3, 3, 10, 9, 15]
+switch 10 and 9
+[7, 1, 3, 3, 9, 10, 15]
+Restart
+switch 7 and 1
+[1, 7, 3, 3, 9, 10, 15]
+switch 7 and 3
+[1, 3, 7, 3, 9, 10, 15]
+switch 7 and 3
+[1, 3, 3, 7, 9, 10, 15]
+Sorted
+b) Yes
+c) 3
+d) 13
+e) 21
+f) O(n^2)
+g)  50 : 1175 permutations, 1225 comparisons
+    100 : 4850 permutations, 4950 comparisons
+    500 : 124250 permutations, 124750 comparisons
+"""
+
+
+def sort_bubble(list):
+    ##
+    # function to sort a list
+    # @param list to sort
+    for i in xrange(0, len(list) - 1):
+        for x in xrange(0, len(list) - 1):
+            if list[x] > list[x + 1]:
+                value = list[x + 1]
+                list[x + 1] = list[x]
+                list[x] = value
+
+    return list
+
+
+#test function sort_bubble
+list = [10, 15, 7, 1, 3, 3, 9]
+print(list)
+list = sort_bubble(list)
+print(list)
