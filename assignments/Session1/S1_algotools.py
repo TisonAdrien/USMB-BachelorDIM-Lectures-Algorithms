@@ -70,11 +70,12 @@ def max_value(table):
     #init max value
     nmax = len(table)
     max_find = False
+    max_value = float('nan')
     for i in xrange(nmax):
         if(type(table[i]) is float or type(table[i]) is int):
             if(max_find == False):
                 max_value = table[i]
-                max_find == True
+                max_find = True
             if table[i]>max_value:
                 max_value=table[i]
     if(type(max_value) is float or type(max_value) is int):
