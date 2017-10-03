@@ -8,6 +8,7 @@ Created on Mon Oct 02 09:56:54 2017
 import S1_algotools as S
 import numpy
 import math
+import pytest as p
 
 def test_average_above_zero_result_5():
     tab = [7,7,7,0,3,0,3,3]
@@ -36,10 +37,7 @@ def test_max_value_result_5():
 
 def test_max_value_result_error():
     tab = ['a','ac']
-    try:
-        S.max_value(tab)
-    except TypeError:
-        assert True
+    with p.raises(TypeError):S.max_value(tab)
 
 def test_reverse_table_pair():
     tab = [1,2,'a',3,4,'b',5,6,'c']
@@ -53,10 +51,7 @@ def test_reverse_table_impair():
     
 def test_reverse_table_empty():
     tab = []
-    try:
-        S.reverse_table(tab)
-    except ValueError:
-        assert True
+    with p.raises(ValueError):S.reverse_table(tab)
 
 def test_roi_bbox():
     mat = numpy.zeros([5,10])
@@ -81,17 +76,11 @@ def test_remove_whitespace_withoutSpace():
  
 def test_remove_whitespace_empty():
     chaine = ""
-    try:
-        S.remove_whitespace(chaine)
-    except ValueError:
-        assert True
+    with p.raises(ValueError):S.remove_whitespace(chaine)
 
 def test_remove_whitespace_number():
     chaine = 5
-    try:
-        S.remove_whitespace(chaine)
-    except TypeError:
-        assert True
+    with p.raises(TypeError):S.remove_whitespace(chaine)
         
 def test_shuffle():
     tab = [1,2,3,4,5,6,7,8]
@@ -100,17 +89,11 @@ def test_shuffle():
 
 def test_shuffle_errorType():
     tab = "Hello world"
-    try:
-        S.shuffle(tab)
-    except TypeError:
-        assert True
+    with p.raises(TypeError):S.shuffle(tab)
 
 def test_shuffle_empty():
     tab = []
-    try:
-        S.shuffle(tab)
-    except ValueError:
-        assert True 
+    with p.raises(ValueError):S.shuffle(tab)
 
 def test_sort_selective():
     tab = [5,1,26,5,8,9,3]
@@ -119,10 +102,7 @@ def test_sort_selective():
 
 def test_sort_selective_empty():
     tab = []
-    try:
-        S.sort_selective(tab)
-    except ValueError:
-        assert True
+    with p.raises(ValueError):S.sort_selective(tab)
 
 def test_sort_bubble():
     tab = [5,1,26,5,8,9,3]
@@ -131,10 +111,7 @@ def test_sort_bubble():
 
 def test_sort_bubble_empty():
     tab = []
-    try:
-        S.sort_bubble(tab)
-    except ValueError:
-        assert True
+    with p.raises(ValueError):S.sort_bubble(tab)
     
 def test_random_fill_sparse_result_5():
     charMat = numpy.zeros([5,5],dtype=str)
