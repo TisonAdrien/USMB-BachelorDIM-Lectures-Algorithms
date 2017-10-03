@@ -45,7 +45,7 @@ def average_above_zero(table):
                 else:
                     print('Négatif : '+str(table[i]))
     if(n == 0):
-        moy = 0
+        moy = float('nan')
     else:
         moy = float(som)/float(n)
     return moy

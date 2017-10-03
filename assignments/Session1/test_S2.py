@@ -7,16 +7,17 @@ Created on Mon Oct 02 09:56:54 2017
 
 import S1_algotools as S
 import numpy
+import math
 
 def test_average_above_zero_result_5():
     tab = [7,7,7,0,3,0,3,3]
     res = S.average_above_zero(tab)
     assert res == 5
 
-def test_average_above_zero_result_zero():
+def test_average_above_zero_result_nan():
     tab = [-1,-10,-5,0,-8,0,-31,-12]
     res = S.average_above_zero(tab)
-    assert res == 0
+    assert math.isnan(res)
     
 def test_max_value_result_56():
     tab = [1,50,23,56,9,0]
