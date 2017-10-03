@@ -42,21 +42,33 @@ def test_max_value_result_error():
         assert True
 
 def test_reverse_table_pair():
-    tab = [1,2,3,4,5,6,7,8,9]
+    tab = [1,2,'a',3,4,'b',5,6,'c']
     res = S.reverse_table(tab)
-    assert res == [9,8,7,6,5,4,3,2,1]
+    assert res == ['c',6,5,'b',4,3,'a',2,1]
 
 def test_reverse_table_impair():
-    tab = [1,2,3,4,5,6,7,8]
+    tab = [1,2,'a',3,4,'b',5,6]
     res = S.reverse_table(tab)
-    assert res == [8,7,6,5,4,3,2,1]
+    assert res == [6,5,'b',4,3,'a',2,1]
+    
+def test_reverse_table_empty():
+    tab = []
+    try:
+        S.reverse_table(tab)
+    except ValueError:
+        assert True
 
 def test_roi_bbox():
     mat = numpy.zeros([5,10])
     mat[2:4,5:9]=numpy.ones([2,4])
     res = S.roi_bbox(mat)
     assert res.all() == numpy.array([[2,5],[2,8],[3,5],[3,8]]).all()
-    
+
+def test_roi_bbox_empty():
+    mat = numpy.zeros([5,10])
+    res = S.roi_bbox(mat)
+    assert res.all() == numpy.array([[0,0],[0,0],[0,0],[0,0]]).all()
+
 def test_remove_whitespace_helloWorld():
     chaine = "Hello world ! "
     res = S.remove_whitespace(chaine)
@@ -66,21 +78,63 @@ def test_remove_whitespace_withoutSpace():
     chaine = "noSpace"
     res = S.remove_whitespace(chaine)
     assert res == "noSpace"
-    
+ 
+def test_remove_whitespace_empty():
+    chaine = ""
+    try:
+        S.remove_whitespace(chaine)
+    except ValueError:
+        assert True
+
+def test_remove_whitespace_number():
+    chaine = 5
+    try:
+        S.remove_whitespace(chaine)
+    except TypeError:
+        assert True
+        
+def test_shuffle():
+    tab = [1,2,3,4,5,6,7,8]
+    res = S.shuffle(tab)
+    assert sum(res) == sum(tab)
+
+def test_shuffle_errorType():
+    tab = "Hello world"
+    try:
+        S.shuffle(tab)
+    except TypeError:
+        assert True
+
+def test_shuffle_empty():
+    tab = []
+    try:
+        S.shuffle(tab)
+    except ValueError:
+        assert True 
+
 def test_sort_selective():
     tab = [5,1,26,5,8,9,3]
     res = S.sort_selective(tab)
     assert res == [1,3,5,5,8,9,26]
 
+def test_sort_selective_empty():
+    tab = []
+    try:
+        S.sort_selective(tab)
+    except ValueError:
+        assert True
+
 def test_sort_bubble():
     tab = [5,1,26,5,8,9,3]
     res = S.sort_bubble(tab)
     assert res == [1,3,5,5,8,9,26]
-    
-def test_shuffle():
-    tab = [1,2,3,4,5,6,7,8]
-    res = S.shuffle(tab)
-    assert sum(res) == sum(tab)
+
+def test_sort_bubble_empty():
+    tab = []
+    try:
+        S.sort_bubble(tab)
+    except ValueError:
+        assert True
     
 def test_random_fill_sparse_result_5():
     charMat = numpy.zeros([5,5],dtype=str)

@@ -55,7 +55,7 @@ print(message)
 
 
 ## Second exercice
-
+import math
 
 def max_value(table):
     ##
@@ -78,7 +78,7 @@ def max_value(table):
                 max_find = True
             if table[i]>max_value:
                 max_value=table[i]
-    if(type(max_value) is float or type(max_value) is int):
+    if(math.isnan(max_value) == False):
         return max_value
     else:
         raise TypeError('Provided list must have number')
@@ -189,7 +189,12 @@ print(random_fill_sparse(myCharMat,5))
 
 ##Sixth exercice
 def remove_whitespace(string):
+    if(type(string) is not string):
+        raise TypeError('Provided string is not a string')
     lenght = len(string)
+    if lenght == 0:
+        #Exception
+        raise ValueError('Provided string is empty')
     i = 0
     while i<lenght:
         if string[i] == ' ':
@@ -208,6 +213,11 @@ def shuffle(list):
     ##
     # function to shuffle a list of values
     # @param list : the list of values to shuffle
+    if len(list) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
+    if(type(list) is not list):
+        raise TypeError('Provided list is not a list')
     second_list = list[:]
     new_list = []
     length = len(second_list)
@@ -256,6 +266,9 @@ def sort_selective(list):
     ##
     # function to sort a list
     # @param list to sort
+    if len(list) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
     for i in xrange(len(list) - 1):
         min = i
         for x in xrange(i, len(list)):
@@ -324,6 +337,9 @@ def sort_bubble(list):
     ##
     # function to sort a list
     # @param list to sort
+    if len(list) == 0:
+        #Exception
+        raise ValueError('Provided list is empty')
     for i in xrange(0, len(list) - 1):
         for x in xrange(0, len(list) - 1):
             if list[x] > list[x + 1]:
