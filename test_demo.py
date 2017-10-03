@@ -36,7 +36,7 @@ def check_S1_selective_average(testList):
     import numpy as np
     import math
     #another way to process the positive elements average to compare with
-    positive_elements_float_array=np.array([i for i in testList if i > 0], dtype=float)
+    positive_elements_float_array=np.array([i for i in testList if i > 0])
     reference_average_value=np.mean(positive_elements_float_array)
     if(math.isnan(reference_average_value)):
         assert math.isnan(load_S1_script().average_above_zero(testList))
