@@ -18,7 +18,12 @@ def test_average_above_zero_result_nan():
     tab = [-1,-10,-5,0,-8,0,-31,-12]
     res = S.average_above_zero(tab)
     assert math.isnan(res)
-    
+
+def test_average_above_zero_result_nan_withChar():
+    tab = ['a','ab']
+    res = S.average_above_zero(tab)
+    assert math.isnan(res) 
+   
 def test_max_value_result_56():
     tab = [1,50,23,56,9,0]
     res = S.max_value(tab)
@@ -64,3 +69,14 @@ def test_sort_bubble():
     tab = [5,1,26,5,8,9,3]
     res = S.sort_bubble(tab)
     assert res == [1,3,5,5,8,9,26]
+    
+def test_shuffle():
+    tab = [1,2,3,4,5,6,7,8]
+    res = S.shuffle(tab)
+    assert sum(res) == sum(tab)
+    
+def test_random_fill_sparse_result_5():
+    charMat = numpy.zeros([5,5],dtype=str)
+    res = S.random_fill_sparse(charMat,5)
+    assert (res == 'X').sum() == 5
+    
