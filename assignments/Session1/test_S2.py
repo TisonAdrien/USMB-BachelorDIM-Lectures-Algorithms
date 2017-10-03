@@ -30,9 +30,16 @@ def test_max_value_result_56():
     assert res == 56
 
 def test_max_value_result_5():
-    tab = [-100,5,2,-5,-45,0]
+    tab = ['b',-100,5,2,-5,-45,'a']
     res = S.max_value(tab)
     assert res == 5
+
+def test_max_value_result_error():
+    tab = ['a','ac']
+    try:
+        S.max_value(tab)
+    except TypeError:
+        assert True
 
 def test_reverse_table_pair():
     tab = [1,2,3,4,5,6,7,8,9]

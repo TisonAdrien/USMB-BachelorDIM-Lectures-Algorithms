@@ -5,22 +5,6 @@ Created on Thu Sep 07 09:47:29 2017
 @author: Adrien Tison, IUT Annecy : LPDIM
 @brief a set of generic functions for data management
 
-#a empty list
-tab = []
-#a filled list
-tab = [0,1,2,3,4,5,6,7,8,9]
-#append to a list
-tab.append(10)
-#a buggy list
-mybuggylist = [1,'a',"Hi"]
-
-#a variable
-a = 0 # default type : int
-
-#operators
-b=a+2
-list_sum = tab+mybuggylist
-
 """
 
 ##  First exercice
@@ -84,12 +68,19 @@ def max_value(table):
         raise ValueError('Provided list is empty')
      
     #init max value
-    max_value = table[0]
     nmax = len(table)
+    max_find = False
     for i in xrange(nmax):
-        if table[i]>max_value:
-            max_value=table[i]
-    return max_value
+        if(type(table[i]) is float or type(table[i]) is int):
+            if(max_find == False):
+                max_value = table[i]
+                max_find == True
+            if table[i]>max_value:
+                max_value=table[i]
+    if(type(max_value) is float or type(max_value) is int):
+        return max_value
+    else:
+        raise TypeError('Provided list must have number')
 
 #test max value function
 max_val = max_value(tab)
