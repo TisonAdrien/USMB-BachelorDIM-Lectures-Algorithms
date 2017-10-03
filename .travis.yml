@@ -9,6 +9,6 @@ addons:
     organization: tisonadrien-github
 # command to run tests
 script:
-  - pytest -v --cov .
+  - pytest --cov .
   - sonar-scanner
   - coveralls
