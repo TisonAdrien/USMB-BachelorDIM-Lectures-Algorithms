@@ -25,7 +25,7 @@ def average_above_zero(table):
                     som = som + table[i]
                     n = n+1
                 elif table[i]==0:
-                    print('Zéro not ')
+                    print('Zéro !')
                 else:
                     print('Négatif : '+str(table[i]))
     if(n == 0):
@@ -277,7 +277,7 @@ def sort_selective(liste):
             if liste[x] < liste[min]:
                 min = x
 
-        if min not = i:
+        if min != i:
             value = liste[min]
             liste[min] = liste[i]
             liste[i] = value
