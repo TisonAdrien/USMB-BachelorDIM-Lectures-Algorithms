@@ -282,7 +282,7 @@ def sort_selective(liste):
             liste[min] = liste[i]
             liste[i] = value
 
-    return list
+    return liste
 
 #test function sort_selective
 #list = [10, 15, 7, 1, 3, 3, 9]
@@ -346,12 +346,12 @@ def sort_bubble(liste):
         raise Exception('Provided list is not a list')
     for i in xrange(0, len(liste) - 1):
         for x in xrange(0, len(liste) - 1):
-            if list[x] > list[x + 1]:
-                value = list[x + 1]
+            if liste[x] > liste[x + 1]:
+                value = liste[x + 1]
                 liste[x + 1] = liste[x]
                 liste[x] = value
 
-    return list
+    return liste
 
 
 #test function sort_bubble
