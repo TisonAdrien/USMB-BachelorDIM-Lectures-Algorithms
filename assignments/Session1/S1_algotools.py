@@ -25,7 +25,7 @@ def average_above_zero(table):
                     som = som + table[i]
                     n = n+1
                 elif table[i]==0:
-                    print('Zéro !')
+                    print('Zéro not ')
                 else:
                     print('Négatif : '+str(table[i]))
     if(n == 0):
@@ -216,7 +216,7 @@ def shuffle(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and !isinstance(lst, basestring)):
+    if(isinstance(liste, (list, tuple)) and not isinstance(lst, basestring)):
         raise Exception('Provided list is not a list')
     second_list = liste[:]
     new_list = []
@@ -269,7 +269,7 @@ def sort_selective(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and !isinstance(lst, basestring)):
+    if(isinstance(liste, (list, tuple)) and not isinstance(lst, basestring)):
         raise Exception('Provided list is not a list')
     for i in xrange(len(liste) - 1):
         min = i
@@ -277,7 +277,7 @@ def sort_selective(liste):
             if liste[x] < liste[min]:
                 min = x
 
-        if min != i:
+        if min not = i:
             value = liste[min]
             liste[min] = liste[i]
             liste[i] = value
@@ -342,7 +342,7 @@ def sort_bubble(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and !isinstance(lst, basestring)):
+    if(isinstance(liste, (list, tuple)) and not isinstance(lst, basestring)):
         raise Exception('Provided list is not a list')
     for i in xrange(0, len(liste) - 1):
         for x in xrange(0, len(liste) - 1):
