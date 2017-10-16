@@ -189,7 +189,7 @@ def random_fill_sparse(table,vfill):
 
 ##Sixth exercice
 def remove_whitespace(string):
-    if(isinstance(string,str)):
+    if(isinstance(string,basestring)):
         raise Exception('Provided string is not a string')
     lenght = len(string)
     if lenght == 0:
@@ -216,7 +216,7 @@ def shuffle(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and not isinstance(liste, basestring)):
+    if(isinstance(liste, (list, tuple)) ):
         raise Exception('Provided list is not a list')
     second_list = liste[:]
     new_list = []
@@ -269,7 +269,7 @@ def sort_selective(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and not isinstance(liste, basestring)):
+    if(isinstance(liste, (list, tuple)) ):
         raise Exception('Provided list is not a list')
     for i in xrange(len(liste) - 1):
         min = i
@@ -342,7 +342,7 @@ def sort_bubble(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(isinstance(liste, (list, tuple)) and not isinstance(liste, basestring)):
+    if(isinstance(liste, (list, tuple)) ):
         raise Exception('Provided list is not a list')
     for i in xrange(0, len(liste) - 1):
         for x in xrange(0, len(liste) - 1):
