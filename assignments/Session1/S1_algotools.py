@@ -209,16 +209,16 @@ def remove_whitespace(string):
 
 
 ##Seventh exercice
-def shuffle(list):
+def shuffle(liste):
     ##
     # function to shuffle a list of values
     # @param list : the list of values to shuffle
-    if len(list) == 0:
+    if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(type(list) is not list):
+    if(type(liste) is not list):
         raise Exception('Provided list is not a list')
-    second_list = list[:]
+    second_list = liste[:]
     new_list = []
     length = len(second_list)
     for x in range(length):
@@ -229,10 +229,10 @@ def shuffle(list):
     return new_list
 
 #test function shuffle
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(list)
-list = shuffle(list)
-print(list)
+liste = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(liste)
+list = shuffle(liste)
+print(liste)
 
 
 
