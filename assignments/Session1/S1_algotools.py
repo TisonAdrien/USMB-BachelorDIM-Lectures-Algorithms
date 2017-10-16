@@ -37,21 +37,21 @@ def average_above_zero(table):
 #random
 import random
 
-tab = []
+#tab = []
 
 #append 200 random numbers in the list
-for i in xrange(200):
+#for i in xrange(200):
     #take a random integer between -100 and 100
-    rand = random.randint(-100,100)
+#    rand = random.randint(-100,100)
     #append the random integer into te list
-    tab.append(rand)
+#    tab.append(rand)
 
 #Call the function average_above_zero
-average = average_above_zero(tab)
+#average = average_above_zero(tab)
 #format the message to print
-message = "Average of random : {result}".format(result = average)
+#message = "Average of random : {result}".format(result = average)
 #print the message formated
-print(message)
+#print(message)
 
 
 ## Second exercice
@@ -84,9 +84,9 @@ def max_value(table):
         raise Exception('Provided list must have number')
 
 #test max value function
-max_val = max_value(tab)
-message = "Max value is {result}".format(result=max_val)
-print(message)
+#max_val = max_value(tab)
+#message = "Max value is {result}".format(result=max_val)
+#print(message)
 
 
 ## Third exercice
@@ -112,21 +112,21 @@ def reverse_table(table):
     return table
 
 #Test reverse table function
-print(reverse_table([1,2,3,4,5,6]))
-print(reverse_table([1,2,3,4,5,6,7]))        
+#print(reverse_table([1,2,3,4,5,6]))
+#print(reverse_table([1,2,3,4,5,6,7]))        
 
 
 ##Fourth exercice
 #matrix processing lib
 import numpy
 #Create an empty matrix 10x10
-myMat = numpy.zeros([5,10])
+#myMat = numpy.zeros([5,10])
 #set a value in a specific cell
 #myMat[1,1] = 1
 #set a value in a interval of the matrix
-myMat[2:4,5:9]=numpy.ones([2,4])
+#myMat[2:4,5:9]=numpy.ones([2,4])
       
-print(myMat)
+#print(myMat)
 
 def roi_bbox(image):
     ##
@@ -161,7 +161,7 @@ def roi_bbox(image):
     return bbox_coords
     
 #test roi_bbox function
-print(roi_bbox(myMat))
+#print(roi_bbox(myMat))
 
 ##Fifth exercice
 
@@ -182,8 +182,8 @@ def random_fill_sparse(table,vfill):
     return table
 
 #test function random_fill_sprase
-myCharMat = numpy.zeros([5,5],dtype=str)
-print(random_fill_sparse(myCharMat,5))
+#myCharMat = numpy.zeros([5,5],dtype=str)
+#print(random_fill_sparse(myCharMat,5))
 
 
 
@@ -229,10 +229,10 @@ def shuffle(liste):
     return new_list
 
 #test function shuffle
-liste = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(liste)
-liste = shuffle(liste)
-print(liste)
+#liste = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+#print(liste)
+#liste = shuffle(liste)
+#print(liste)
 
 
 
@@ -285,10 +285,10 @@ def sort_selective(liste):
     return list
 
 #test function sort_selective
-list = [10, 15, 7, 1, 3, 3, 9]
-print(list)
-list = sort_selective(list)
-print(list)
+#list = [10, 15, 7, 1, 3, 3, 9]
+#print(list)
+#list = sort_selective(list)
+#print(list)
 
 
 """
@@ -355,7 +355,7 @@ def sort_bubble(liste):
 
 
 #test function sort_bubble
-list = [10, 15, 7, 1, 3, 3, 9]
-print(list)
-list = sort_bubble(list)
-print(list)
+#list = [10, 15, 7, 1, 3, 3, 9]
+#print(list)
+#list = sort_bubble(list)
+#print(list)
