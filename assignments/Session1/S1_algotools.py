@@ -72,7 +72,7 @@ def max_value(table):
     max_find = False
     max_value = float('nan')
     for i in xrange(nmax):
-        if(type(table[i]) is float or type(table[i]) is int):
+        if(isinstance(table[i], float) or isinstance(table[i], int)):
             if(max_find == False):
                 max_value = table[i]
                 max_find = True
@@ -189,7 +189,7 @@ print(random_fill_sparse(myCharMat,5))
 
 ##Sixth exercice
 def remove_whitespace(string):
-    if(type(string) is not string):
+    if(isinstance(string,str)):
         raise Exception('Provided string is not a string')
     lenght = len(string)
     if lenght == 0:
@@ -216,7 +216,7 @@ def shuffle(liste):
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    if(type(liste) is not list):
+    if(isinstance(liste,list)):
         raise Exception('Provided list is not a list')
     second_list = liste[:]
     new_list = []
@@ -262,23 +262,25 @@ g)  50 : 49 permutations, 1225 comparisons
     500 : 499 permutations, 124750 comparisons
 """
 
-def sort_selective(list):
+def sort_selective(liste):
     ##
     # function to sort a list
     # @param list to sort
-    if len(list) == 0:
+    if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    for i in xrange(len(list) - 1):
+    if(isinstance(liste,list)):
+        raise Exception('Provided list is not a list')
+    for i in xrange(len(liste) - 1):
         min = i
-        for x in xrange(i, len(list)):
-            if list[x] < list[min]:
+        for x in xrange(i, len(liste)):
+            if liste[x] < liste[min]:
                 min = x
 
         if min != i:
-            value = list[min]
-            list[min] = list[i]
-            list[i] = value
+            value = liste[min]
+            liste[min] = liste[i]
+            liste[i] = value
 
     return list
 
@@ -333,19 +335,21 @@ g)  50 : 1175 permutations, 1225 comparisons
 """
 
 
-def sort_bubble(list):
+def sort_bubble(liste):
     ##
     # function to sort a list
     # @param list to sort
-    if len(list) == 0:
+    if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
-    for i in xrange(0, len(list) - 1):
-        for x in xrange(0, len(list) - 1):
+    if(isinstance(liste,list)):
+        raise Exception('Provided list is not a list')
+    for i in xrange(0, len(liste) - 1):
+        for x in xrange(0, len(liste) - 1):
             if list[x] > list[x + 1]:
                 value = list[x + 1]
-                list[x + 1] = list[x]
-                list[x] = value
+                liste[x + 1] = liste[x]
+                liste[x] = value
 
     return list
 

@@ -111,6 +111,11 @@ def test_sort_selective_empty():
     with p.raises(Exception):
         S.sort_selective(tab)
 
+def test_sort_selective_error():
+    tab = "Hello world"
+    with p.raises(Exception):
+        S.sort_selective(tab)
+
 def test_sort_bubble():
     tab = [5,1,26,5,8,9,3]
     res = S.sort_bubble(tab)
@@ -118,6 +123,11 @@ def test_sort_bubble():
 
 def test_sort_bubble_empty():
     tab = []
+    with p.raises(Exception):
+        S.sort_bubble(tab)
+
+def test_sort_bubble_error():
+    tab = "Hello world"
     with p.raises(Exception):
         S.sort_bubble(tab)
     
