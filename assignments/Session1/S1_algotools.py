@@ -35,7 +35,7 @@ def average_above_zero(table):
     return moy
     
 #random
-import random
+
 
 #tab = []
 
@@ -55,7 +55,7 @@ import random
 
 
 ## Second exercice
-import math
+
 
 def max_value(table):
     ##
@@ -63,6 +63,7 @@ def max_value(table):
     #@param input list : a list to analyze
     #@throws an exception (ValueError) on an empty list
     #first check if provided list is not empty
+    import math
     if len(table) == 0:
         #Exception
         raise Exception('Provided list is empty')
@@ -118,7 +119,7 @@ def reverse_table(table):
 
 ##Fourth exercice
 #matrix processing lib
-import numpy
+
 #Create an empty matrix 10x10
 #myMat = numpy.zeros([5,10])
 #set a value in a specific cell
@@ -133,6 +134,7 @@ def roi_bbox(image):
     #function to bound an image with a binary code
     #@param matrix
     #output coordinates matrix
+    import numpy
     min_y = image.shape[0]
     max_y = 0
     min_x = image.shape[1]
@@ -170,6 +172,7 @@ def random_fill_sparse(table,vfill):
     #function to fill cells with value 'X'
     #@param matrix, vfill
     #output matrix
+    import random
     for i in range(vfill):
         #take 2 randoms numbers
         y = random.randint(0,table.shape[0]-1)
@@ -213,6 +216,7 @@ def shuffle(liste):
     ##
     # function to shuffle a list of values
     # @param list : the list of values to shuffle
+    import random
     if len(liste) == 0:
         #Exception
         raise Exception('Provided list is empty')
