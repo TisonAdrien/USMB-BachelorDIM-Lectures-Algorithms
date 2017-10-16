@@ -65,7 +65,7 @@ def max_value(table):
     #first check if provided list is not empty
     if len(table) == 0:
         #Exception
-        raise ValueError('Provided list is empty')
+        raise Exception('Provided list is empty')
      
     #init max value
     nmax = len(table)
@@ -81,7 +81,7 @@ def max_value(table):
     if(math.isnan(max_value) == False):
         return max_value
     else:
-        raise TypeError('Provided list must have number')
+        raise Exception('Provided list must have number')
 
 #test max value function
 max_val = max_value(tab)
@@ -99,7 +99,7 @@ def reverse_table(table):
     #first check if provided list is not empty
     if len(table) == 0:
         #Exception
-        raise ValueError('Provided list is empty')
+        raise Exception('Provided list is empty')
     
     pos_last = len(table)
     for i in xrange(len(table)/2):
@@ -190,11 +190,11 @@ print(random_fill_sparse(myCharMat,5))
 ##Sixth exercice
 def remove_whitespace(string):
     if(type(string) is not string):
-        raise TypeError('Provided string is not a string')
+        raise Exception('Provided string is not a string')
     lenght = len(string)
     if lenght == 0:
         #Exception
-        raise ValueError('Provided string is empty')
+        raise Exception('Provided string is empty')
     i = 0
     while i<lenght:
         if string[i] == ' ':
@@ -204,8 +204,8 @@ def remove_whitespace(string):
     return string
 
 #test function remove whitspace
-string = "Hello World 1 2 3"
-print(string+' => '+remove_whitespace(string))
+# string = "Hello World 1 2 3"
+# print(string+' => '+remove_whitespace(string))
 
 
 ##Seventh exercice
@@ -215,9 +215,9 @@ def shuffle(list):
     # @param list : the list of values to shuffle
     if len(list) == 0:
         #Exception
-        raise ValueError('Provided list is empty')
+        raise Exception('Provided list is empty')
     if(type(list) is not list):
-        raise TypeError('Provided list is not a list')
+        raise Exception('Provided list is not a list')
     second_list = list[:]
     new_list = []
     length = len(second_list)
@@ -268,7 +268,7 @@ def sort_selective(list):
     # @param list to sort
     if len(list) == 0:
         #Exception
-        raise ValueError('Provided list is empty')
+        raise Exception('Provided list is empty')
     for i in xrange(len(list) - 1):
         min = i
         for x in xrange(i, len(list)):
@@ -339,7 +339,7 @@ def sort_bubble(list):
     # @param list to sort
     if len(list) == 0:
         #Exception
-        raise ValueError('Provided list is empty')
+        raise Exception('Provided list is empty')
     for i in xrange(0, len(list) - 1):
         for x in xrange(0, len(list) - 1):
             if list[x] > list[x + 1]:

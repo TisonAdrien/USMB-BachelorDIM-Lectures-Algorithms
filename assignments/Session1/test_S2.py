@@ -37,7 +37,7 @@ def test_max_value_result_5():
 
 def test_max_value_result_error():
     tab = ['a','ac']
-    with p.raises(TypeError):
+    with p.raises(Exception):
         S.max_value(tab)
 
 def test_reverse_table_pair():
@@ -52,7 +52,7 @@ def test_reverse_table_impair():
     
 def test_reverse_table_empty():
     tab = []
-    with p.raises(ValueError):
+    with p.raises(Exception):
         S.reverse_table(tab)
 
 def test_roi_bbox():
@@ -78,12 +78,12 @@ def test_remove_whitespace_withoutSpace():
  
 def test_remove_whitespace_empty():
     chaine = ""
-    with p.raises(ValueError):
+    with p.raises(Exception):
         S.remove_whitespace(chaine)
 
 def test_remove_whitespace_number():
     chaine = 5
-    with p.raises(TypeError):
+    with p.raises(Exception):
         S.remove_whitespace(chaine)
         
 def test_shuffle():
@@ -93,12 +93,12 @@ def test_shuffle():
 
 def test_shuffle_errorType():
     tab = "Hello world"
-    with p.raises(TypeError):
+    with p.raises(Exception):
         S.shuffle(tab)
 
 def test_shuffle_empty():
     tab = []
-    with p.raises(ValueError):
+    with p.raises(Exception):
         S.shuffle(tab)
 
 def test_sort_selective():
@@ -108,7 +108,7 @@ def test_sort_selective():
 
 def test_sort_selective_empty():
     tab = []
-    with p.raises(ValueError):
+    with p.raises(Exception):
         S.sort_selective(tab)
 
 def test_sort_bubble():
@@ -118,7 +118,7 @@ def test_sort_bubble():
 
 def test_sort_bubble_empty():
     tab = []
-    with p.raises(ValueError):
+    with p.raises(Exception):
         S.sort_bubble(tab)
     
 def test_random_fill_sparse_result_5():
