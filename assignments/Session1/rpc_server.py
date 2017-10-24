@@ -16,8 +16,13 @@ params = pika.URLParameters(url)
 params.socket_timeout = 5
 
 def doSomething(request_params):
+    if(request_params == "b'Ping'"):
+        rep = 'Pong'
+    else:
+        rep = 'Fine and you ?'
     print("Request : %r" % request_params)
-    return 'Fine and you ?'
+    print("Response : %r" % rep)
+    return rep
 
 def on_request(ch, method, props, body): #process and reply function
         request_param = str(body)# retrieve input parameters
