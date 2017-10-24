@@ -33,7 +33,7 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 #Declare the channel
-channel.queue_declare(queue='presentation')
+channel.queue_declare(queue='presentation', durable=True)
 
 #Declare th number of responses global for update in callback when we read
 number_response = 0

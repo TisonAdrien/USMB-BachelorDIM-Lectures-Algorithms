@@ -19,7 +19,7 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 #Declare the channel
-channel.queue_declare(queue='presentation')
+channel.queue_declare(queue='presentation', durable=True)
 
 #Function callback : print the received message
 def callback(ch, method, properties, body):
